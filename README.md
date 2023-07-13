@@ -6,7 +6,7 @@ Un software Python per la Gestione Magazzino basilare per privati.
 
 ## Per Windows
 
-- Scarica il pacchetto più aggiornato da [QUI]([https://www.github.com/octokatherine](https://github.com/GaetanoDEV/StoragePlus/releases))
+- Scarica il pacchetto più aggiornato da [QUI](https://github.com/GaetanoDEV/StoragePlus/releases)
 - Estrai il pacchetto in una directory comoda
 - Avvia il file "FirstInstall.bat" per l'installazione dei componenti necessari.
 - Esegui "StoragePlus - AVVIABILE.bat" oppure /etc/StoragePlus.py

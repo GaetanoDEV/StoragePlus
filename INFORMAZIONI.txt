@@ -1,0 +1,25 @@
+------------------------------------------
+             StoragePlus INFO
+
+1. Il software è scritto interamente in Python in un unico main file riconoscibile come "StoragePlus" in /etc
+2. Per il primo utilizzo del software su una macchina pulita, assicurarsi di:
+- Aver l'ultima versione di Python installata nella macchina
+- Aver installato il modulo "mysql-connector-python" tramite pip (Dipendenza per la connessione al Database remoto)
+Altrimenti è possibile avviare il file nominato come "FirstInstall.bat" per autonomizzare il processo di installazione di Python e dei moduli necessari.
+
+Risoluzione ai problemi:
+1. In caso di problematiche all'avvio del software dopo la prima installazione, riavviare la macchina per permettere al registro di sistema di applicare le directory dell'Envirorment di Python.
+2. E' consigliabile installare Python direttamente dal Microsoft Store se si si disponde di Windows 10 in sù
+
+Info:
+1. Il software condivide le informazioni con un Database MySQL remoto, in modo tale da controllare / visualizzare gli oggetti del magazzino attraverso diversi dispositivi.
+2. E' necessaria una connessione ad internet per poter utilizzare il Software.
+
+------------------------------------------
+               CHANGELOGS:
+
+v1.1 BETA (13/07/23)
+* Aggiunta la sezione "Codice" nella tabella e nel menù creazione oggetto.
+* Aggiunto il pulsante "Modifica" per modificare il contenuto di oggetto selezionato.
+* Ora la finestra di login viene chiusa in automatico ad accesso effettuato correttamente
+* Miglioramenti sulla stabilità per la connessione SQL

@@ -2,6 +2,11 @@ import mysql.connector
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
+import webbrowser
+import requests
+from bs4 import BeautifulSoup
+from screeninfo import get_monitors
+import json
 
 # Connessione al database MySQL
 db = mysql.connector.connect(
@@ -89,7 +94,12 @@ def show_main_window():
     global main_window
     main_window = Tk()
     main_window.title("StoragePlus - Gestione Magazzino")
-    main_window.geometry("960x360")
+    main_window.geometry("960x400")
+
+    # Aggiungi un testo in fondo alla finestra principale con un link alla repository di GitHub
+    github_label = Label(main_window, text="Pagina ufficiale del Progetto", fg="blue", cursor="hand2")
+    github_label.pack(pady=10)
+    github_label.bind("<Button-1>", lambda e: webbrowser.open_new("https://github.com/GaetanoDEV/StoragePlus"))
 
     # Creazione della tabella degli oggetti con Treeview
     global item_list
@@ -118,7 +128,6 @@ def show_main_window():
 
     # Mostrare la lista degli oggetti nella tabella
     show_items()
-
 
 # Funzione per mostrare il form per aggiungere un oggetto
 def show_add_item_form():
@@ -263,6 +272,46 @@ def show_items():
 
     cursor.close()
 
+# Funzione per controllare gli aggiornamenti sulla repository GitHub
+def check_update():
+    # Effettua la richiesta GET all'API di GitHub
+    response = requests.get("https://api.github.com/repos/GaetanoDEV/StoragePlus/releases/latest")
+    if response.status_code == 200:
+        # Ottieni la versione dalla risposta JSON
+        data = json.loads(response.text)
+        latest_version = data["tag_name"]
+
+        # Controlla se la versione ottenuta è più recente della versione attuale
+        if latest_version > "1.2-beta":  # Sostituisci con la versione attuale del programma
+            # Crea la finestra di aggiornamento
+            update_window = Toplevel(login_window)
+            update_window.title("Aggiornamento")
+
+            # Calcola le dimensioni dello schermo
+            screen_width = login_window.winfo_screenwidth()
+            screen_height = login_window.winfo_screenheight()
+
+            # Calcola le dimensioni e la posizione della finestra di aggiornamento
+            window_width = 400
+            window_height = 150
+            window_x = (screen_width - window_width) // 2
+            window_y = (screen_height - window_height) // 2
+
+            # Imposta la geometria della finestra di aggiornamento
+            update_window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
+
+            # Etichetta per il messaggio di aggiornamento
+            update_label = Label(update_window, text="È disponibile una nuova versione del programma.\nAggiornare ora?")
+            update_label.pack(pady=10)
+
+            # Bottone per aggiornare ora
+            update_button = Button(update_window, text="Aggiorna ora", command=lambda: webbrowser.open_new("https://github.com/GaetanoDEV/StoragePlus/releases"))
+            update_button.pack(ipadx=5, ipady=5, expand=True)
+
+            # Bottone per annullare
+            cancel_button = Button(update_window, text="Annulla", command=update_window.destroy)
+            cancel_button.pack(ipadx=5, ipady=5, expand=True)
+
 # Finestra di login
 login_window = Tk()
 login_window.title("Login")
@@ -279,6 +328,9 @@ password_entry.grid(row=1, column=1)
 
 login_button = Button(login_window, text="Accedi", command=login)
 login_button.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
+
+# Controlla gli aggiornamenti all'apertura del programma
+check_update()
 
 # Mostra la finestra di login solo se è necessario
 if __name__ == "__main__":

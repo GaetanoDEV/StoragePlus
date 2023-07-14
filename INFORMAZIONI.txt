@@ -23,3 +23,9 @@ v1.1 BETA (13/07/23)
 * Aggiunto il pulsante "Modifica" per modificare il contenuto di oggetto selezionato.
 * Ora la finestra di login viene chiusa in automatico ad accesso effettuato correttamente
 * Miglioramenti sulla stabilità per la connessione SQL
+
+v1.2 BETA (14/07/23)
+* Miglioramenti della GUI e delle posizioni delle interfacce
+* Aggiunto il sistema per Avviso di Aggiornamento in caso sia disponbile una nuova release
+* E' ora possibile visitare la Pagina web del progetto tramite il programma
+* Aggiunti nuovi moduli per la corretta funzione del programma (Ri-esegui FirstInstall.bat)

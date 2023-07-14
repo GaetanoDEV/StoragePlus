@@ -17,7 +17,7 @@ Un software Python per la Gestione Magazzino basilare per privati.
 - Estrai il pacchetto in una directory comoda
 - A seconda della distribuzione Installa Python con:
 ```
- sudo apt install python 3 -y (Ubuntu / Debian)
+ sudo apt install python3 -y (Ubuntu / Debian)
 ```
 ```
 > yum install -y python3 (RedHat / CentOS)

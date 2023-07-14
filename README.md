@@ -24,7 +24,10 @@ Un software Python per la Gestione Magazzino basilare per privati.
 ```
 - Esegui il comando da terminale per l'installazione delle librerie:
 ```
-> pip install mysql-connector-python
+pip install mysql-connector-python
+pip install requests
+pip install bs4
+pip install screeninfo
 ```
 
 ## Configurazione per Privati
